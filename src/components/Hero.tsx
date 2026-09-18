@@ -51,7 +51,7 @@ export default function Hero() {
         >
           <ResponsiveImage
             id={slide.photo}
-            alt={`${slide.model} на фоне гор`}
+            alt={slide.model}
             widths={WIDTHS_HERO}
             sizes="100vw"
             priority={i === 0}

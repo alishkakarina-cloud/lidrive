@@ -9,7 +9,7 @@ export default function LifestyleSection({ page = false }: { page?: boolean }) {
       <div className="relative overflow-hidden rounded-3xl border border-white/8">
         <ResponsiveImage
           id={PHOTO.familyHome}
-          alt="Семья рядом с Lixiang у дома"
+          alt="Lixiang L9 на городской улице"
           widths={WIDTHS_WIDE}
           sizes="(max-width: 1600px) 100vw, 1600px"
           aspect="21/9"

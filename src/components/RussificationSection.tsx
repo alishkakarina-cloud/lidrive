@@ -20,7 +20,7 @@ export default function RussificationSection({ page = false }: { page?: boolean 
       <div className="relative overflow-hidden rounded-3xl border border-white/8">
         <ResponsiveImage
           id={PHOTO.rearMountain}
-          alt="Lixiang на фоне гор на закате"
+          alt="Lixiang L9 сзади"
           widths={WIDTHS_WIDE}
           sizes="(max-width: 1600px) 100vw, 1600px"
           className="absolute inset-0 h-full w-full object-cover"

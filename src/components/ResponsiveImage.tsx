@@ -1,4 +1,4 @@
-import { img, srcSet } from "../lib/images";
+import { fallbackJpg, img, srcSet } from "../lib/images";
 
 interface ResponsiveImageProps {
   id: string;
@@ -22,11 +22,12 @@ export default function ResponsiveImage({
   quality = 80,
 }: ResponsiveImageProps) {
   const fallbackWidth = widths[Math.floor(widths.length / 2)];
-  return (
+  const jpg = fallbackJpg(id);
+  const tag = (
     <img
-      src={img(id, fallbackWidth, quality)}
-      srcSet={srcSet(id, widths, quality)}
-      sizes={sizes}
+      src={jpg ?? img(id, fallbackWidth, quality)}
+      srcSet={jpg ? undefined : srcSet(id, widths, quality)}
+      sizes={jpg ? undefined : sizes}
       alt={alt}
       loading={priority ? "eager" : "lazy"}
       fetchPriority={priority ? "high" : "auto"}
@@ -34,5 +35,12 @@ export default function ResponsiveImage({
       style={aspect ? { aspectRatio: aspect } : undefined}
       className={`bg-neutral-900 ${className}`}
     />
+  );
+  if (!jpg) return tag;
+  return (
+    <picture>
+      <source type="image/webp" srcSet={srcSet(id, widths, quality)} sizes={sizes} />
+      {tag}
+    </picture>
   );
 }
