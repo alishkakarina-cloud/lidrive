@@ -1,17 +1,15 @@
+import { Link } from "react-router-dom";
 import { ArrowRight, Clock, Mail, MapPin, Phone } from "lucide-react";
 import { InstagramIcon, TelegramIcon, YoutubeIcon } from "./SocialIcons";
-import { useUI } from "../lib/ui";
 
-export default function ContactSection() {
-  const { setBookingOpen } = useUI();
-
+export default function ContactSection({ page = false }: { page?: boolean }) {
   return (
-    <section id="contacts" className="mx-auto max-w-[1600px] scroll-mt-20 px-4 py-10 pb-20 sm:px-6 lg:px-10">
+    <section className="mx-auto max-w-[1600px] px-4 py-10 sm:px-6 lg:px-10">
       <div className="grid overflow-hidden rounded-3xl border border-white/8 bg-panel lg:grid-cols-2">
         <div className="p-6 sm:p-10 lg:p-14">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Контакты</h2>
+          {page ? null : <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Контакты</h2>}
 
-          <ul className="mt-8 flex flex-col gap-5 text-sm">
+          <ul className={`flex flex-col gap-5 text-sm ${page ? "" : "mt-8"}`}>
             <li className="flex items-start gap-3">
               <Phone size={18} className="mt-0.5 shrink-0 text-fg-dim" />
               <div>
@@ -83,14 +81,15 @@ export default function ContactSection() {
               LI DRIVE
             </div>
           </div>
-          <button
-            type="button"
-            onClick={() => setBookingOpen(true)}
-            className="group flex items-center justify-center gap-2 rounded-full border border-white/25 py-3.5 text-sm font-semibold hover:bg-white/8"
-          >
-            Написать нам
-            <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-          </button>
+          {!page && (
+            <Link
+              to="/contacts"
+              className="group flex items-center justify-center gap-2 rounded-full border border-white/25 py-3.5 text-sm font-semibold hover:bg-white/8"
+            >
+              Написать нам
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          )}
         </div>
       </div>
     </section>

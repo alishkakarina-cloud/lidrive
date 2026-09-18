@@ -3,11 +3,11 @@ import { InstagramIcon, TelegramIcon, YoutubeIcon } from "./SocialIcons";
 
 const NAV = [
   { label: "Каталог", href: "/catalog" },
-  { label: "Сервис", href: "/#service" },
-  { label: "Доставка", href: "/#contacts" },
-  { label: "Гарантия", href: "/product/kovriki-v-salon-komplekt" },
-  { label: "О нас", href: "/#about" },
-  { label: "Контакты", href: "/#contacts" },
+  { label: "Сервис", href: "/service" },
+  { label: "Доставка", href: "/delivery" },
+  { label: "Гарантия", href: "/warranty" },
+  { label: "О нас", href: "/about" },
+  { label: "Контакты", href: "/contacts" },
 ];
 
 export default function Footer() {

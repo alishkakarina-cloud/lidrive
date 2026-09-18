@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, Search, ShoppingCart, User, X } from "lucide-react";
 import { useCart } from "../lib/cart";
 import { useUI } from "../lib/ui";
 
 const NAV_LINKS = [
   { label: "Каталог", href: "/catalog" },
-  { label: "Аксессуары", href: "/catalog" },
-  { label: "Русификация", href: "/#russification" },
-  { label: "Сервис", href: "/#service" },
-  { label: "О нас", href: "/#about" },
-  { label: "Контакты", href: "/#contacts" },
+  { label: "Аксессуары", href: "/accessories" },
+  { label: "Русификация", href: "/russification" },
+  { label: "Сервис", href: "/service" },
+  { label: "О нас", href: "/about" },
+  { label: "Контакты", href: "/contacts" },
 ];
 
 export default function Header() {
@@ -20,7 +20,6 @@ export default function Header() {
   const { totalCount } = useCart();
   const { setCartOpen, setSearchOpen } = useUI();
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -32,18 +31,6 @@ export default function Header() {
   useEffect(() => {
     setMobileOpen(false);
   }, [location.pathname]);
-
-  const handleNav = (href: string) => (e: React.MouseEvent) => {
-    if (href.startsWith("/#")) {
-      const id = href.slice(2);
-      if (location.pathname === "/") {
-        e.preventDefault();
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-      } else {
-        navigate(href);
-      }
-    }
-  };
 
   return (
     <header
@@ -59,14 +46,15 @@ export default function Header() {
 
         <nav className="hidden items-center gap-8 lg:flex">
           {NAV_LINKS.map((link) => (
-            <Link
+            <NavLink
               key={link.label}
               to={link.href}
-              onClick={handleNav(link.href)}
-              className="text-sm font-medium text-fg-dim transition-colors hover:text-fg"
+              className={({ isActive }) =>
+                `text-sm font-medium transition-colors hover:text-fg ${isActive ? "text-fg" : "text-fg-dim"}`
+              }
             >
               {link.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
@@ -102,11 +90,8 @@ export default function Header() {
                     Вход и история заказов появятся здесь в ближайшее время. Пока свяжитесь с нами напрямую.
                   </p>
                   <Link
-                    to="/#contacts"
-                    onClick={(e) => {
-                      handleNav("/#contacts")(e);
-                      setProfileOpen(false);
-                    }}
+                    to="/contacts"
+                    onClick={() => setProfileOpen(false)}
                     className="mt-3 inline-block text-accent hover:underline"
                   >
                     Написать нам →
@@ -157,10 +142,7 @@ export default function Header() {
               <Link
                 key={link.label}
                 to={link.href}
-                onClick={(e) => {
-                  handleNav(link.href)(e);
-                  setMobileOpen(false);
-                }}
+                onClick={() => setMobileOpen(false)}
                 className="border-b border-white/8 py-4 text-xl font-medium"
               >
                 {link.label}

@@ -22,7 +22,7 @@ export default function CategoriesSection() {
         {HOME_CATEGORIES.map((cat) => (
           <Link
             key={cat.id}
-            to={`/catalog?category=${cat.id}`}
+            to={cat.id === "russification" ? "/russification" : cat.id === "service" ? "/service" : `/catalog?category=${cat.id}`}
             className="group relative flex aspect-[3/4] flex-col justify-end overflow-hidden rounded-2xl border border-white/8"
           >
             <ResponsiveImage

@@ -1,11 +1,9 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import ResponsiveImage from "./ResponsiveImage";
 import { PHOTO, WIDTHS_WIDE } from "../lib/images";
 
-export default function LifestyleSection() {
-  const [open, setOpen] = useState(false);
-
+export default function LifestyleSection({ page = false }: { page?: boolean }) {
   return (
     <section className="mx-auto max-w-[1600px] px-4 py-10 sm:px-6 lg:px-10">
       <div className="relative overflow-hidden rounded-3xl border border-white/8">
@@ -25,20 +23,14 @@ export default function LifestyleSection() {
           <p className="mt-4 max-w-xs text-sm text-fg-dim sm:text-base">
             Простор. Технологии. Комфорт. Всё, что действительно важно.
           </p>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            className="group mt-6 flex w-fit items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold hover:bg-white/8"
-          >
-            Узнать больше
-            <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-          </button>
-          {open && (
-            <p className="animate-fade-up mt-4 max-w-sm text-sm text-fg-dim">
-              Просторный семейный салон, запас хода для дальних поездок и умные технологии — Lixiang
-              подстраивается под ваш ритм жизни. Мы подберём аксессуары и сервис так, чтобы каждая поездка была комфортной.
-            </p>
+          {!page && (
+            <Link
+              to="/about"
+              className="group mt-6 flex w-fit items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold hover:bg-white/8"
+            >
+              Узнать больше
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+            </Link>
           )}
         </div>
       </div>
