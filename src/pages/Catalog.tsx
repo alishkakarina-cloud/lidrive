@@ -39,7 +39,7 @@ export default function Catalog() {
     const q = query.trim().toLowerCase();
     const list = PRODUCTS.filter((p) => {
       if (category !== "all" && p.categoryId !== category) return false;
-      if (model !== "all" && !p.models.includes(model)) return false;
+      if (model !== "all" && p.models.length > 0 && !p.models.includes(model)) return false;
       if (q && !p.name.toLowerCase().includes(q)) return false;
       return true;
     });

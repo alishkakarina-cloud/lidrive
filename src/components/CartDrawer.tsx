@@ -4,7 +4,7 @@ import { Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
 import { useCart, formatPrice } from "../lib/cart";
 import { useUI } from "../lib/ui";
 import { PRODUCTS } from "../lib/products";
-import ResponsiveImage from "./ResponsiveImage";
+import ProductPhoto from "./ProductPhoto";
 import { WIDTHS_CARD } from "../lib/images";
 
 export default function CartDrawer() {
@@ -71,9 +71,8 @@ export default function CartDrawer() {
                       onClick={() => setCartOpen(false)}
                       className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-panel"
                     >
-                      <ResponsiveImage
-                        id={product.image}
-                        alt={product.name}
+                      <ProductPhoto
+                        product={product}
                         widths={WIDTHS_CARD}
                         sizes="80px"
                         aspect="1/1"
@@ -98,7 +97,7 @@ export default function CartDrawer() {
                           <Trash2 size={15} />
                         </button>
                       </div>
-                      <span className="mt-0.5 text-xs text-fg-mute">Цвет: {line.color}</span>
+                      {line.color && <span className="mt-0.5 text-xs text-fg-mute">Цвет: {line.color}</span>}
                       <div className="mt-2 flex items-center justify-between">
                         <div className="flex items-center gap-2 rounded-full border border-line px-1">
                           <button

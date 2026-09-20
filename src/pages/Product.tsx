@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { CheckCircle2, Minus, Plus, ShieldCheck, Truck } from "lucide-react";
 import Breadcrumbs from "../components/Breadcrumbs";
-import ResponsiveImage from "../components/ResponsiveImage";
+import ProductPhoto from "../components/ProductPhoto";
 import StarRating from "../components/StarRating";
 import { WIDTHS_CARD, WIDTHS_WIDE } from "../lib/images";
 import { categoryLabel, findProduct } from "../lib/products";
 import { formatPrice, useCart } from "../lib/cart";
+import { usePhotoList } from "../lib/photos";
 import { useUI } from "../lib/ui";
 
 export default function Product() {
   const { slug = "" } = useParams();
   const product = findProduct(slug);
+  const photos = usePhotoList(product);
   const [active, setActive] = useState(0);
   const [colorIdx, setColorIdx] = useState(0);
   const [qty, setQty] = useState(1);
@@ -40,7 +42,7 @@ export default function Product() {
   const color = product.colors[colorIdx];
 
   const add = () => {
-    addToCart(product.id, color.name, qty);
+    addToCart(product.id, color?.name ?? "", qty);
     showToast(`«${product.name}» добавлен в корзину`);
   };
 
@@ -57,9 +59,9 @@ export default function Product() {
       <div className="mt-8 grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-14">
         <div>
           <div className="overflow-hidden rounded-2xl border border-line bg-panel">
-            <ResponsiveImage
-              id={product.gallery[active]}
-              alt={product.name}
+            <ProductPhoto
+              product={product}
+              index={active}
               widths={WIDTHS_WIDE}
               sizes="(max-width: 1024px) 100vw, 55vw"
               aspect="1/1"
@@ -67,10 +69,10 @@ export default function Product() {
               className="w-full object-cover"
             />
           </div>
-          <div className="mt-3 grid grid-cols-4 gap-2 sm:grid-cols-5">
-            {product.gallery.map((g, i) => (
+          <div className={`mt-3 grid grid-cols-4 gap-2 sm:grid-cols-5 ${photos.length > 1 ? "" : "hidden"}`}>
+            {photos.map((_, i) => (
               <button
-                key={g + i}
+                key={i}
                 type="button"
                 onClick={() => setActive(i)}
                 aria-label={`Фото ${i + 1}`}
@@ -79,9 +81,10 @@ export default function Product() {
                   i === active ? "border-tint" : "border-transparent opacity-70 hover:opacity-100"
                 }`}
               >
-                <ResponsiveImage
-                  id={g}
-                  alt=""
+                <ProductPhoto
+                  product={product}
+                  index={i}
+                  decorative
                   widths={WIDTHS_CARD}
                   sizes="120px"
                   aspect="1/1"
@@ -95,12 +98,14 @@ export default function Product() {
         <div>
           <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">{product.name}</h1>
 
-          <div className="mt-3 flex items-center gap-2 text-sm">
-            <StarRating rating={product.rating} />
-            <span className="text-fg-dim">
-              {product.rating} ({product.reviewsCount} отзыва)
-            </span>
-          </div>
+          {product.reviewsCount > 0 && (
+            <div className="mt-3 flex items-center gap-2 text-sm">
+              <StarRating rating={product.rating} />
+              <span className="text-fg-dim">
+                {product.rating} ({product.reviewsCount} отзыва)
+              </span>
+            </div>
+          )}
 
           <div className="mt-5 flex flex-wrap items-center gap-3">
             <span className="text-3xl font-bold tracking-tight">{formatPrice(product.price)}</span>
@@ -111,22 +116,26 @@ export default function Product() {
             )}
           </div>
 
-          <p className="mt-4 text-sm text-fg-dim">
-            Совместимость: <span className="text-fg">{product.compatibility}</span>
-          </p>
+          {product.compatibility && (
+            <p className="mt-4 text-sm text-fg-dim">
+              Совместимость: <span className="text-fg">{product.compatibility}</span>
+            </p>
+          )}
 
-          <ul className="mt-6 flex flex-col gap-2.5">
-            {product.features.map((f) => (
-              <li key={f} className="flex items-center gap-2.5 text-sm">
-                <CheckCircle2 size={17} className="shrink-0 fill-accent text-white" />
-                {f}
-              </li>
-            ))}
-          </ul>
+          {product.features.length > 0 && (
+            <ul className="mt-6 flex flex-col gap-2.5">
+              {product.features.map((f) => (
+                <li key={f} className="flex items-center gap-2.5 text-sm">
+                  <CheckCircle2 size={17} className="shrink-0 fill-accent text-white" />
+                  {f}
+                </li>
+              ))}
+            </ul>
+          )}
 
-          <div className="mt-7">
+          <div className={`mt-7 ${product.colors.length > 0 ? "" : "hidden"}`}>
             <p className="text-sm text-fg-dim">
-              Цвет: <span className="text-fg">{color.name}</span>
+              Цвет: <span className="text-fg">{color?.name}</span>
             </p>
             <div className="mt-2.5 flex items-center gap-3">
               {product.colors.map((c, i) => (
@@ -175,7 +184,7 @@ export default function Product() {
             <button
               type="button"
               onClick={() => {
-                addToCart(product.id, color.name, qty);
+                addToCart(product.id, color?.name ?? "", qty);
                 setCartOpen(true);
               }}
               className="flex-1 rounded-full bg-accent hover:bg-accent-hover px-6 py-3.5 text-sm font-semibold text-white transition hover:scale-[1.03] active:scale-95 sm:flex-none"
@@ -184,18 +193,24 @@ export default function Product() {
             </button>
           </div>
 
-          <div className="mt-8 flex flex-col gap-3 border-t border-line pt-6 text-sm text-fg-dim">
-            <div className="flex items-center gap-3">
-              <Truck size={18} />
-              {product.delivery}
+          {(product.delivery || product.warranty) && (
+            <div className="mt-8 flex flex-col gap-3 border-t border-line pt-6 text-sm text-fg-dim">
+              {product.delivery && (
+                <div className="flex items-center gap-3">
+                  <Truck size={18} />
+                  {product.delivery}
+                </div>
+              )}
+              {product.warranty && (
+                <div className="flex items-center gap-3">
+                  <ShieldCheck size={18} />
+                  {product.warranty}
+                </div>
+              )}
             </div>
-            <div className="flex items-center gap-3">
-              <ShieldCheck size={18} />
-              {product.warranty}
-            </div>
-          </div>
+          )}
 
-          <p className="mt-6 text-sm leading-relaxed text-fg-dim">{product.description}</p>
+          {product.description && <p className="mt-6 text-sm leading-relaxed text-fg-dim">{product.description}</p>}
         </div>
       </div>
     </div>

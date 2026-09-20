@@ -1,6 +1,6 @@
 import { Heart, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
-import ResponsiveImage from "./ResponsiveImage";
+import ProductPhoto from "./ProductPhoto";
 import { WIDTHS_CARD } from "../lib/images";
 import { useCart, formatPrice } from "../lib/cart";
 import { useUI } from "../lib/ui";
@@ -14,9 +14,8 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-panel transition-colors hover:border-accent hover:bg-elevated">
       <Link to={`/product/${product.slug}`} className="relative block aspect-square overflow-hidden bg-panel">
-        <ResponsiveImage
-          id={product.image}
-          alt={product.name}
+        <ProductPhoto
+          product={product}
           widths={WIDTHS_CARD}
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 22vw"
           aspect="1/1"
@@ -44,7 +43,7 @@ export default function ProductCard({ product }: { product: Product }) {
           <button
             type="button"
             onClick={() => {
-              addToCart(product.id, product.colors[0]?.name ?? "Чёрный", 1);
+              addToCart(product.id, product.colors[0]?.name ?? "", 1);
               showToast(`«${product.name}» добавлен в корзину`);
             }}
             aria-label="В корзину"

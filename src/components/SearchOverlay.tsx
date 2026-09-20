@@ -4,7 +4,7 @@ import { Search, X } from "lucide-react";
 import { PRODUCTS } from "../lib/products";
 import { useUI } from "../lib/ui";
 import { formatPrice } from "../lib/cart";
-import ResponsiveImage from "./ResponsiveImage";
+import ProductPhoto from "./ProductPhoto";
 import { WIDTHS_CARD } from "../lib/images";
 
 export default function SearchOverlay() {
@@ -77,9 +77,8 @@ export default function SearchOverlay() {
                 className="flex items-center gap-3 border-b border-line px-4 py-3 last:border-none hover:bg-elevated"
               >
                 <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-panel">
-                  <ResponsiveImage
-                    id={p.image}
-                    alt={p.name}
+                  <ProductPhoto
+                    product={p}
                     widths={WIDTHS_CARD}
                     sizes="48px"
                     aspect="1/1"

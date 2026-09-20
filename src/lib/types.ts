@@ -22,6 +22,8 @@ export interface Product {
   delivery: string;
   warranty: string;
   description: string;
+  alt?: string;
+  photoFiles?: { dir: string; names: string[] };
 }
 
 export interface Category {
