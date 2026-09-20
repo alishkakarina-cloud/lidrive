@@ -1,18 +1,33 @@
 @import "tailwindcss";
 
+/* ---- Палитра (единственное место, где задаются цвета) ---- */
+:root {
+  --green-bg: #0b1f17; /* основной фон страницы и секций */
+  --green-surface: #10281e; /* карточки, блоки, шапка, подвал */
+  --green-elevated: #163526; /* наведение на карточки, выпадающие элементы, поля */
+  --green-border: #1e3d2e; /* границы, разделители, тонкие линии */
+  --green-accent: #1b5e3f; /* кнопки, активные элементы, иконки */
+  --green-accent-hover: #237a52; /* кнопки при наведении */
+  --green-text: #7dbe9c; /* приглушённый светлый оттенок: акцентный текст, звёзды (контраст ≥ 7:1) */
+}
+
 @theme {
   --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  --color-ink: #08090a;
-  --color-panel: #101113;
-  --color-panel-2: #17181b;
-  --color-line: rgba(255, 255, 255, 0.1);
-  --color-line-soft: rgba(255, 255, 255, 0.06);
+  --color-ink: var(--green-bg);
+  --color-panel: var(--green-surface);
+  --color-panel-2: var(--green-elevated);
+  --color-elevated: var(--green-elevated);
+  --color-line: var(--green-border);
+  --color-accent: var(--green-accent);
+  --color-accent-hover: var(--green-accent-hover);
+  --color-accent-dim: rgba(27, 94, 63, 0.4);
+  --color-tint: var(--green-text);
   --color-fg: #f5f5f4;
   --color-fg-dim: #a3a3a0;
-  --color-fg-mute: #6f6f6c;
-  --color-accent: #3ecf72;
-  --color-accent-dim: rgba(62, 207, 114, 0.14);
+  --color-fg-mute: #8a948e;
+
+  --default-transition-duration: 250ms;
 
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-marquee: marquee 32s linear infinite;
@@ -43,16 +58,31 @@ html {
 }
 
 body {
-  background: var(--color-ink);
+  background: var(--green-bg);
   color: var(--color-fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
+@layer base {
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  article,
+  li,
+  div,
+  header,
+  footer {
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+  }
+}
+
 ::selection {
-  background: var(--color-accent);
-  color: #06120a;
+  background: var(--green-accent);
+  color: #ffffff;
 }
 
 ::-webkit-scrollbar {
@@ -60,26 +90,26 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-ink);
+  background: var(--green-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2b2e;
+  background: var(--green-border);
   border-radius: 999px;
-  border: 2px solid var(--color-ink);
+  border: 2px solid var(--green-bg);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a3b3e;
+  background: var(--green-accent);
 }
 
 @layer utilities {
   .glass {
-    background: rgba(16, 17, 19, 0.55);
+    background: rgba(16, 40, 30, 0.6);
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border: 1px solid var(--color-line-soft);
+    border: 1px solid var(--green-border);
   }
   .glass-strong {
-    background: rgba(10, 11, 12, 0.72);
+    background: rgba(16, 40, 30, 0.8);
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
   }

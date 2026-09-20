@@ -12,12 +12,12 @@ const NAV = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/8 bg-ink">
+    <footer className="border-t border-line bg-panel">
       <div className="mx-auto max-w-[1600px] px-4 py-14 sm:px-6 lg:px-10">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div>
             <Link to="/" className="flex flex-col leading-none">
-              <span className="text-xl font-extrabold tracking-tight">LI DRIVE</span>
+              <span className="text-xl font-extrabold tracking-tight">KIBER SMART AUTO</span>
               <span className="mt-1 text-[10px] font-semibold tracking-[0.28em] text-fg-mute">
                 LIXIANG SPECIALIST
               </span>
@@ -43,7 +43,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-fg-dim transition-colors hover:border-accent hover:text-accent"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-accent hover:text-tint"
               >
                 <InstagramIcon size={17} />
               </a>
@@ -52,7 +52,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Telegram"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-fg-dim transition-colors hover:border-accent hover:text-accent"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-accent hover:text-tint"
               >
                 <TelegramIcon size={17} />
               </a>
@@ -61,7 +61,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="YouTube"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-fg-dim transition-colors hover:border-accent hover:text-accent"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-accent hover:text-tint"
               >
                 <YoutubeIcon size={18} />
               </a>
@@ -69,8 +69,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/8 pt-6 text-xs text-fg-mute">
-          © 2025 LI DRIVE. Все права защищены. Создано с фокусом на качество.
+        <div className="mt-12 border-t border-line pt-6 text-xs text-fg-mute">
+          © 2025 KIBER SMART AUTO. Все права защищены. Создано с фокусом на качество.
         </div>
       </div>
     </footer>

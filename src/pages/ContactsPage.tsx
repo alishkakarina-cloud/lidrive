@@ -27,7 +27,7 @@ export default function ContactsPage() {
   };
 
   const field =
-    "rounded-xl border border-white/12 bg-panel-2 px-4 py-3 text-sm outline-none focus:border-accent";
+    "rounded-xl border border-line bg-panel-2 px-4 py-3 text-sm outline-none focus:border-accent";
 
   return (
     <>
@@ -39,7 +39,7 @@ export default function ContactsPage() {
       <ContactSection page />
       <Wrap>
         <SectionTitle>Написать нам</SectionTitle>
-        <form onSubmit={submit} className="grid max-w-2xl gap-4 rounded-3xl border border-white/8 bg-panel p-6 sm:p-8">
+        <form onSubmit={submit} className="grid max-w-2xl gap-4 rounded-3xl border border-line bg-panel p-6 sm:p-8">
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="flex flex-col gap-1.5">
               <label htmlFor="c-name" className="text-xs font-medium text-fg-dim">Имя</label>
@@ -54,7 +54,7 @@ export default function ContactsPage() {
             <label htmlFor="c-msg" className="text-xs font-medium text-fg-dim">Сообщение</label>
             <textarea id="c-msg" required rows={4} value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Чем мы можем помочь?" className={field} />
           </div>
-          <button type="submit" className="w-fit rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-95">
+          <button type="submit" className="w-fit rounded-full bg-accent hover:bg-accent-hover px-7 py-3.5 text-sm font-semibold text-white transition hover:scale-[1.03] active:scale-95">
             Отправить
           </button>
         </form>

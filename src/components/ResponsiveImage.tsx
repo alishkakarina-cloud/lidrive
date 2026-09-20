@@ -33,7 +33,7 @@ export default function ResponsiveImage({
       fetchPriority={priority ? "high" : "auto"}
       decoding="async"
       style={aspect ? { aspectRatio: aspect } : undefined}
-      className={`bg-neutral-900 ${className}`}
+      className={`bg-panel ${className}`}
     />
   );
   if (!jpg) return tag;

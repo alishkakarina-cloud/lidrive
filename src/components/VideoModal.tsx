@@ -24,10 +24,10 @@ export default function VideoModal() {
     <div className="fixed inset-0 z-[95] flex items-center justify-center p-4">
       <button
         aria-label="Закрыть видео"
-        className="absolute inset-0 bg-black/85 backdrop-blur-md"
+        className="absolute inset-0 bg-ink/85 backdrop-blur-md"
         onClick={() => setVideoOpen(false)}
       />
-      <div className="animate-fade-up relative w-full max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl">
+      <div className="animate-fade-up relative w-full max-w-3xl overflow-hidden rounded-2xl border border-line bg-black shadow-2xl">
         <button
           type="button"
           onClick={() => setVideoOpen(false)}

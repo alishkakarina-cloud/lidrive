@@ -40,7 +40,7 @@ export default function ReviewsPage() {
     setRating(5);
   };
 
-  const field = "rounded-xl border border-white/12 bg-panel-2 px-4 py-3 text-sm outline-none focus:border-accent";
+  const field = "rounded-xl border border-line bg-panel-2 px-4 py-3 text-sm outline-none focus:border-accent";
 
   return (
     <>
@@ -58,7 +58,7 @@ export default function ReviewsPage() {
       </Wrap>
       <Wrap>
         <SectionTitle>Оставить отзыв</SectionTitle>
-        <form onSubmit={submit} className="grid max-w-2xl gap-4 rounded-3xl border border-white/8 bg-panel p-6 sm:p-8">
+        <form onSubmit={submit} className="grid max-w-2xl gap-4 rounded-3xl border border-line bg-panel p-6 sm:p-8">
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="flex flex-col gap-1.5">
               <label htmlFor="r-name" className="text-xs font-medium text-fg-dim">Имя</label>
@@ -84,7 +84,7 @@ export default function ReviewsPage() {
                   aria-label={`Оценка ${n}`}
                   aria-pressed={rating === n}
                   className={`h-10 w-10 rounded-full border text-sm font-semibold transition-colors ${
-                    n <= rating ? "border-amber-400 bg-amber-400/15 text-amber-400" : "border-white/12 text-fg-dim"
+                    n <= rating ? "border-tint bg-accent-dim text-tint" : "border-line text-fg-dim"
                   }`}
                 >
                   {n}
@@ -96,7 +96,7 @@ export default function ReviewsPage() {
             <label htmlFor="r-text" className="text-xs font-medium text-fg-dim">Отзыв</label>
             <textarea id="r-text" required rows={4} value={text} onChange={(e) => setText(e.target.value)} placeholder="Расскажите о своём опыте" className={field} />
           </div>
-          <button type="submit" className="w-fit rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-95">
+          <button type="submit" className="w-fit rounded-full bg-accent hover:bg-accent-hover px-7 py-3.5 text-sm font-semibold text-white transition hover:scale-[1.03] active:scale-95">
             Опубликовать
           </button>
         </form>

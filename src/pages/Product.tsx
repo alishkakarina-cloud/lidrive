@@ -30,7 +30,7 @@ export default function Product() {
       <div className="mx-auto flex max-w-xl flex-col items-center gap-4 px-6 py-32 text-center">
         <h1 className="text-3xl font-bold">Товар не найден</h1>
         <p className="text-fg-dim">Возможно, ссылка устарела. Вернитесь в каталог и выберите другой товар.</p>
-        <Link to="/catalog" className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink">
+        <Link to="/catalog" className="rounded-full bg-accent hover:bg-accent-hover px-6 py-3 text-sm font-semibold text-white">
           В каталог
         </Link>
       </div>
@@ -56,7 +56,7 @@ export default function Product() {
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-14">
         <div>
-          <div className="overflow-hidden rounded-2xl border border-white/8 bg-panel">
+          <div className="overflow-hidden rounded-2xl border border-line bg-panel">
             <ResponsiveImage
               id={product.gallery[active]}
               alt={product.name}
@@ -76,7 +76,7 @@ export default function Product() {
                 aria-label={`Фото ${i + 1}`}
                 aria-pressed={i === active}
                 className={`overflow-hidden rounded-xl border-2 transition-colors ${
-                  i === active ? "border-white" : "border-transparent opacity-70 hover:opacity-100"
+                  i === active ? "border-tint" : "border-transparent opacity-70 hover:opacity-100"
                 }`}
               >
                 <ResponsiveImage
@@ -105,8 +105,8 @@ export default function Product() {
           <div className="mt-5 flex flex-wrap items-center gap-3">
             <span className="text-3xl font-bold tracking-tight">{formatPrice(product.price)}</span>
             {product.inStock && (
-              <span className="flex items-center gap-1.5 rounded-full bg-accent-dim px-3 py-1 text-xs font-semibold text-accent">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent" />В наличии
+              <span className="flex items-center gap-1.5 rounded-full bg-accent-dim px-3 py-1 text-xs font-semibold text-tint">
+                <span className="h-1.5 w-1.5 rounded-full bg-tint" />В наличии
               </span>
             )}
           </div>
@@ -118,7 +118,7 @@ export default function Product() {
           <ul className="mt-6 flex flex-col gap-2.5">
             {product.features.map((f) => (
               <li key={f} className="flex items-center gap-2.5 text-sm">
-                <CheckCircle2 size={17} className="shrink-0 fill-white text-ink" />
+                <CheckCircle2 size={17} className="shrink-0 fill-accent text-white" />
                 {f}
               </li>
             ))}
@@ -137,7 +137,7 @@ export default function Product() {
                   aria-label={c.name}
                   aria-pressed={i === colorIdx}
                   className={`h-8 w-8 rounded-full border-2 transition-transform hover:scale-110 ${
-                    i === colorIdx ? "border-white ring-2 ring-white/30" : "border-white/20"
+                    i === colorIdx ? "border-tint ring-2 ring-tint/40" : "border-line"
                   }`}
                   style={{ backgroundColor: c.hex }}
                 />
@@ -146,7 +146,7 @@ export default function Product() {
           </div>
 
           <div className="mt-7 flex flex-wrap items-center gap-3">
-            <div className="flex items-center rounded-full border border-white/15">
+            <div className="flex items-center rounded-full border border-line">
               <button
                 type="button"
                 onClick={() => setQty((q) => Math.max(1, q - 1))}
@@ -168,7 +168,7 @@ export default function Product() {
             <button
               type="button"
               onClick={add}
-              className="flex-1 rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold transition-colors hover:bg-white/8 sm:flex-none"
+              className="flex-1 rounded-full border border-accent px-6 py-3.5 text-sm font-semibold transition-colors hover:bg-accent sm:flex-none"
             >
               В корзину
             </button>
@@ -178,13 +178,13 @@ export default function Product() {
                 addToCart(product.id, color.name, qty);
                 setCartOpen(true);
               }}
-              className="flex-1 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-95 sm:flex-none"
+              className="flex-1 rounded-full bg-accent hover:bg-accent-hover px-6 py-3.5 text-sm font-semibold text-white transition hover:scale-[1.03] active:scale-95 sm:flex-none"
             >
               Купить в 1 клик
             </button>
           </div>
 
-          <div className="mt-8 flex flex-col gap-3 border-t border-white/8 pt-6 text-sm text-fg-dim">
+          <div className="mt-8 flex flex-col gap-3 border-t border-line pt-6 text-sm text-fg-dim">
             <div className="flex items-center gap-3">
               <Truck size={18} />
               {product.delivery}

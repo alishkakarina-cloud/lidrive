@@ -35,13 +35,13 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "glass-strong border-b border-white/8" : "border-b border-transparent bg-transparent"
+        scrolled ? "border-b border-line bg-panel/95 backdrop-blur-xl" : "border-b border-line/60 bg-panel/70 backdrop-blur-md"
       }`}
     >
       <div className="mx-auto flex h-18 max-w-[1600px] items-center justify-between gap-4 px-4 py-3.5 sm:px-6 lg:px-10">
         <Link to="/" className="flex flex-col leading-none">
-          <span className="text-lg font-extrabold tracking-tight">LI DRIVE</span>
-          <span className="text-[9px] font-semibold tracking-[0.28em] text-fg-mute">LIXIANG SPECIALIST</span>
+          <span className="whitespace-nowrap text-[15px] font-extrabold tracking-tight sm:text-lg">KIBER SMART AUTO</span>
+          <span className="whitespace-nowrap text-[8px] font-semibold tracking-[0.24em] text-fg-mute sm:text-[9px] sm:tracking-[0.28em]">LIXIANG SPECIALIST</span>
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
@@ -63,7 +63,7 @@ export default function Header() {
             type="button"
             onClick={() => setSearchOpen(true)}
             aria-label="Поиск"
-            className="flex h-10 w-10 items-center justify-center rounded-full text-fg-dim transition-colors hover:bg-white/8 hover:text-fg"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-fg-dim transition-colors hover:bg-elevated hover:text-fg"
           >
             <Search size={18} />
           </button>
@@ -73,7 +73,7 @@ export default function Header() {
               onClick={() => setProfileOpen((v) => !v)}
               aria-label="Профиль"
               aria-expanded={profileOpen}
-              className="flex h-10 w-10 items-center justify-center rounded-full text-fg-dim transition-colors hover:bg-white/8 hover:text-fg"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-fg-dim transition-colors hover:bg-elevated hover:text-fg"
             >
               <User size={18} />
             </button>
@@ -84,7 +84,7 @@ export default function Header() {
                   className="fixed inset-0 z-40 cursor-default"
                   onClick={() => setProfileOpen(false)}
                 />
-                <div className="glass-strong absolute right-0 z-50 mt-2 w-64 rounded-2xl border border-white/10 p-4 text-sm shadow-2xl">
+                <div className="glass-strong absolute right-0 z-50 mt-2 w-64 rounded-2xl border border-line p-4 text-sm shadow-2xl">
                   <p className="font-semibold">Личный кабинет</p>
                   <p className="mt-1 text-fg-dim">
                     Вход и история заказов появятся здесь в ближайшее время. Пока свяжитесь с нами напрямую.
@@ -92,7 +92,7 @@ export default function Header() {
                   <Link
                     to="/contacts"
                     onClick={() => setProfileOpen(false)}
-                    className="mt-3 inline-block text-accent hover:underline"
+                    className="mt-3 inline-block text-tint hover:underline"
                   >
                     Написать нам →
                   </Link>
@@ -104,11 +104,11 @@ export default function Header() {
             type="button"
             onClick={() => setCartOpen(true)}
             aria-label="Корзина"
-            className="relative flex h-10 w-10 items-center justify-center rounded-full text-fg-dim transition-colors hover:bg-white/8 hover:text-fg"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full text-fg-dim transition-colors hover:bg-elevated hover:text-fg"
           >
             <ShoppingCart size={18} />
             {totalCount > 0 && (
-              <span className="absolute -right-0.5 -top-0.5 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-accent px-1 text-[10px] font-bold text-[#06120a]">
+              <span className="absolute -right-0.5 -top-0.5 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-accent px-1 text-[10px] font-bold text-white">
                 {totalCount}
               </span>
             )}
@@ -117,7 +117,7 @@ export default function Header() {
             type="button"
             onClick={() => setMobileOpen(true)}
             aria-label="Меню"
-            className="flex h-10 w-10 items-center justify-center rounded-full text-fg-dim hover:bg-white/8 hover:text-fg lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-fg-dim hover:bg-elevated hover:text-fg lg:hidden"
           >
             <Menu size={20} />
           </button>
@@ -125,14 +125,14 @@ export default function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-50 bg-ink lg:hidden">
+        <div className="fixed inset-0 z-50 bg-panel lg:hidden">
           <div className="flex h-18 items-center justify-between px-4 py-3.5">
-            <span className="text-lg font-extrabold">LI DRIVE</span>
+            <span className="text-lg font-extrabold">KIBER SMART AUTO</span>
             <button
               type="button"
               onClick={() => setMobileOpen(false)}
               aria-label="Закрыть меню"
-              className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-white/8"
+              className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-elevated"
             >
               <X size={20} />
             </button>
@@ -143,7 +143,7 @@ export default function Header() {
                 key={link.label}
                 to={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="border-b border-white/8 py-4 text-xl font-medium"
+                className="border-b border-line py-4 text-xl font-medium"
               >
                 {link.label}
               </Link>

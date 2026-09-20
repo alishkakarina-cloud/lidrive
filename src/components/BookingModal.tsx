@@ -56,22 +56,22 @@ export default function BookingModal() {
     <div className="fixed inset-0 z-[95] flex items-center justify-center p-4">
       <button
         aria-label="Закрыть форму"
-        className="absolute inset-0 bg-black/80 backdrop-blur-md"
+        className="absolute inset-0 bg-ink/80 backdrop-blur-md"
         onClick={() => setBookingOpen(false)}
       />
-      <div className="animate-fade-up relative w-full max-w-md rounded-2xl border border-white/10 bg-panel p-6 shadow-2xl sm:p-8">
+      <div className="animate-fade-up relative w-full max-w-md rounded-2xl border border-line bg-panel p-6 shadow-2xl sm:p-8">
         <button
           type="button"
           onClick={() => setBookingOpen(false)}
           aria-label="Закрыть"
-          className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full hover:bg-white/8"
+          className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full hover:bg-elevated"
         >
           <X size={18} />
         </button>
 
         {submitted ? (
           <div className="flex flex-col items-center gap-3 py-8 text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent-dim text-accent">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent-dim text-tint">
               ✓
             </div>
             <h3 className="text-xl font-semibold">Заявка отправлена</h3>
@@ -79,7 +79,7 @@ export default function BookingModal() {
             <button
               type="button"
               onClick={() => setBookingOpen(false)}
-              className="mt-2 rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-ink"
+              className="mt-2 rounded-full bg-accent hover:bg-accent-hover px-6 py-2.5 text-sm font-semibold text-white"
             >
               Закрыть
             </button>
@@ -97,7 +97,7 @@ export default function BookingModal() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Ваше имя"
-                  className="rounded-xl border border-white/12 bg-panel-2 px-4 py-3 text-sm outline-none focus:border-accent"
+                  className="rounded-xl border border-line bg-panel-2 px-4 py-3 text-sm outline-none focus:border-accent"
                 />
               </div>
               <div className="flex flex-col gap-1.5">
@@ -109,7 +109,7 @@ export default function BookingModal() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+996 700 123 456"
-                  className="rounded-xl border border-white/12 bg-panel-2 px-4 py-3 text-sm outline-none focus:border-accent"
+                  className="rounded-xl border border-line bg-panel-2 px-4 py-3 text-sm outline-none focus:border-accent"
                 />
               </div>
               <div className="flex flex-col gap-1.5">
@@ -118,7 +118,7 @@ export default function BookingModal() {
                   id="booking-service"
                   value={service}
                   onChange={(e) => setService(e.target.value)}
-                  className="rounded-xl border border-white/12 bg-panel-2 px-4 py-3 text-sm outline-none focus:border-accent"
+                  className="rounded-xl border border-line bg-panel-2 px-4 py-3 text-sm outline-none focus:border-accent"
                 >
                   {SERVICES.map((s) => (
                     <option key={s} value={s}>
@@ -129,7 +129,7 @@ export default function BookingModal() {
               </div>
               <button
                 type="submit"
-                className="mt-2 rounded-full bg-white py-3.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                className="mt-2 rounded-full bg-accent hover:bg-accent-hover py-3.5 text-sm font-semibold text-white transition hover:scale-[1.02] active:scale-[0.98]"
               >
                 Отправить заявку
               </button>

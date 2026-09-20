@@ -4,7 +4,7 @@ import type { Category, Product, Review } from "./types";
 export const MODELS = ["L6", "L7", "L8", "L9", "MEGA"] as const;
 
 export const CATALOG_CATEGORIES: Category[] = [
-  { id: "all", name: "Все товары", description: "Весь ассортимент LI DRIVE", image: PHOTO.interior, count: 124 },
+  { id: "all", name: "Все товары", description: "Весь ассортимент KIBER SMART AUTO", image: PHOTO.interior, count: 124 },
   { id: "salon", name: "Салон", description: "Коврики, чехлы, органайзеры", image: PHOTO.interior, count: 28 },
   { id: "exterior", name: "Экстерьер", description: "Брызговики, защита, накладки", image: PHOTO.exteriorWheel, count: 24 },
   { id: "electronics", name: "Электроника", description: "Зарядки, компоненты, держатели", image: PHOTO.charger, count: 18 },

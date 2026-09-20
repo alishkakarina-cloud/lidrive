@@ -17,7 +17,7 @@ export default function RussificationSection({ page = false }: { page?: boolean 
 
   return (
     <section className="mx-auto max-w-[1600px] px-4 py-10 sm:px-6 lg:px-10">
-      <div className="relative overflow-hidden rounded-3xl border border-white/8">
+      <div className="relative overflow-hidden rounded-3xl border border-line">
         <ResponsiveImage
           id={PHOTO.rearMountain}
           alt="Lixiang L9 сзади"
@@ -31,7 +31,7 @@ export default function RussificationSection({ page = false }: { page?: boolean 
         <div className="relative grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:p-14">
           <div className="flex flex-col justify-center">
             {page ? (
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Услуга</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-tint">Услуга</p>
             ) : null}
             {page ? (
               <p className="mt-2 text-3xl font-bold tracking-tight sm:text-5xl">Полная адаптация под ваш регион</p>
@@ -48,7 +48,7 @@ export default function RussificationSection({ page = false }: { page?: boolean 
                 <button
                   type="button"
                   onClick={() => setBookingOpen(true)}
-                  className="group flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-95"
+                  className="group flex items-center gap-2 rounded-full bg-accent hover:bg-accent-hover px-6 py-3.5 text-sm font-semibold text-white transition hover:scale-[1.03] active:scale-95"
                 >
                   Записаться на установку
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
@@ -57,7 +57,7 @@ export default function RussificationSection({ page = false }: { page?: boolean 
                 <>
                   <Link
                     to="/russification"
-                    className="group flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-95"
+                    className="group flex items-center gap-2 rounded-full bg-accent hover:bg-accent-hover px-6 py-3.5 text-sm font-semibold text-white transition hover:scale-[1.03] active:scale-95"
                   >
                     Подробнее
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
@@ -65,7 +65,7 @@ export default function RussificationSection({ page = false }: { page?: boolean 
                   <button
                     type="button"
                     onClick={() => setBookingOpen(true)}
-                    className="rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold hover:bg-white/5"
+                    className="rounded-full border border-accent px-6 py-3.5 text-sm font-semibold hover:bg-accent"
                   >
                     Записаться на установку
                   </button>
@@ -84,7 +84,7 @@ export default function RussificationSection({ page = false }: { page?: boolean 
                 aspect="16/10"
                 className="w-full object-cover"
               />
-              <div className="absolute inset-0 bg-black/45" />
+              <div className="absolute inset-0 bg-ink/45" />
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-4">
                 <p className="text-lg font-semibold">Добро пожаловать</p>
                 <div className="grid grid-cols-3 gap-2 sm:gap-3">
@@ -102,7 +102,7 @@ export default function RussificationSection({ page = false }: { page?: boolean 
           </div>
         </div>
 
-        <div className="relative flex flex-wrap gap-x-10 gap-y-4 border-t border-white/10 px-6 py-6 sm:px-10 lg:px-14">
+        <div className="relative flex flex-wrap gap-x-10 gap-y-4 border-t border-line px-6 py-6 sm:px-10 lg:px-14">
           {PERKS.map((perk) => (
             <div key={perk.label} className="flex items-center gap-2.5 text-sm text-fg-dim">
               <perk.icon size={18} />

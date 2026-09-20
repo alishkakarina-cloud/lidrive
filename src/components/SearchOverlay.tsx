@@ -44,11 +44,11 @@ export default function SearchOverlay() {
     <div className="fixed inset-0 z-[95] flex flex-col">
       <button
         aria-label="Закрыть поиск"
-        className="absolute inset-0 bg-black/80 backdrop-blur-md"
+        className="absolute inset-0 bg-ink/80 backdrop-blur-md"
         onClick={() => setSearchOpen(false)}
       />
       <div className="relative mx-auto w-full max-w-2xl px-4 pt-24 sm:pt-32">
-        <form onSubmit={submit} className="glass-strong flex items-center gap-3 rounded-2xl border border-white/12 px-5 py-4">
+        <form onSubmit={submit} className="glass-strong flex items-center gap-3 rounded-2xl border border-line px-5 py-4">
           <Search size={20} className="text-fg-mute" />
           <input
             autoFocus
@@ -61,22 +61,22 @@ export default function SearchOverlay() {
             type="button"
             onClick={() => setSearchOpen(false)}
             aria-label="Закрыть"
-            className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-white/8"
+            className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-elevated"
           >
             <X size={18} />
           </button>
         </form>
 
         {results.length > 0 && (
-          <div className="glass-strong mt-3 overflow-hidden rounded-2xl border border-white/10">
+          <div className="glass-strong mt-3 overflow-hidden rounded-2xl border border-line">
             {results.map((p) => (
               <Link
                 key={p.id}
                 to={`/product/${p.slug}`}
                 onClick={() => setSearchOpen(false)}
-                className="flex items-center gap-3 border-b border-white/6 px-4 py-3 last:border-none hover:bg-white/5"
+                className="flex items-center gap-3 border-b border-line px-4 py-3 last:border-none hover:bg-elevated"
               >
-                <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-neutral-900">
+                <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-panel">
                   <ResponsiveImage
                     id={p.image}
                     alt={p.name}

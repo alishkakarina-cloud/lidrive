@@ -5,7 +5,7 @@ import type { Review } from "../lib/types";
 
 export default function ReviewCard({ review: r }: { review: Review }) {
   return (
-    <article className="rounded-2xl border border-white/8 bg-panel p-5 sm:p-6">
+    <article className="rounded-2xl border border-line bg-panel p-5 transition-colors hover:bg-elevated sm:p-6">
       <div className="flex items-center gap-3">
         {r.avatarSeed > 0 ? (
           <img
@@ -14,7 +14,7 @@ export default function ReviewCard({ review: r }: { review: Review }) {
             width={44}
             height={44}
             loading="lazy"
-            className="h-11 w-11 rounded-full bg-neutral-800 object-cover"
+            className="h-11 w-11 rounded-full bg-panel-2 object-cover"
           />
         ) : (
           <span className="flex h-11 w-11 items-center justify-center rounded-full bg-panel-2 text-sm font-semibold">

@@ -6,7 +6,7 @@ import { PHOTO, WIDTHS_WIDE } from "../lib/images";
 export default function LifestyleSection({ page = false }: { page?: boolean }) {
   return (
     <section className="mx-auto max-w-[1600px] px-4 py-10 sm:px-6 lg:px-10">
-      <div className="relative overflow-hidden rounded-3xl border border-white/8">
+      <div className="relative overflow-hidden rounded-3xl border border-line">
         <ResponsiveImage
           id={PHOTO.familyHome}
           alt="Lixiang L9 на городской улице"
@@ -26,7 +26,7 @@ export default function LifestyleSection({ page = false }: { page?: boolean }) {
           {!page && (
             <Link
               to="/about"
-              className="group mt-6 flex w-fit items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold hover:bg-white/8"
+              className="group mt-6 flex w-fit items-center gap-2 rounded-full border border-accent px-6 py-3 text-sm font-semibold hover:bg-accent"
             >
               Узнать больше
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />

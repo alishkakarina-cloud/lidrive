@@ -69,7 +69,7 @@ export default function Catalog() {
               onClick={() => update("model", m)}
               aria-pressed={active}
               className={`flex flex-col items-center gap-2 rounded-xl border px-3 py-4 text-sm font-medium transition-colors ${
-                active ? "border-white bg-white/8 text-fg" : "border-white/10 text-fg-dim hover:border-white/30"
+                active ? "border-tint bg-elevated text-fg" : "border-line text-fg-dim hover:border-accent"
               }`}
             >
               <Car size={26} strokeWidth={1.3} />
@@ -91,11 +91,11 @@ export default function Catalog() {
                     onClick={() => update("category", c.id === "all" ? null : c.id)}
                     aria-pressed={active}
                     className={`flex w-full items-center justify-between gap-3 whitespace-nowrap rounded-xl px-4 py-2.5 text-sm transition-colors ${
-                      active ? "bg-white text-ink font-semibold" : "text-fg-dim hover:bg-white/6 hover:text-fg"
+                      active ? "bg-accent hover:bg-accent-hover text-white font-semibold" : "text-fg-dim hover:bg-elevated hover:text-fg"
                     }`}
                   >
                     <span>{c.name}</span>
-                    <span className={active ? "text-ink/60" : "text-fg-mute"}>({c.count})</span>
+                    <span className={active ? "text-white/70" : "text-fg-mute"}>({c.count})</span>
                   </button>
                 </li>
               );
@@ -122,7 +122,7 @@ export default function Catalog() {
                     className="fixed inset-0 z-30 cursor-default"
                     onClick={() => setSortOpen(false)}
                   />
-                  <ul className="glass-strong absolute left-0 z-40 mt-2 w-52 overflow-hidden rounded-xl border border-white/10 py-1 shadow-2xl">
+                  <ul className="glass-strong absolute left-0 z-40 mt-2 w-52 overflow-hidden rounded-xl border border-line py-1 shadow-2xl">
                     {(Object.keys(SORT_LABELS) as Sort[]).map((s) => (
                       <li key={s}>
                         <button
@@ -131,8 +131,8 @@ export default function Catalog() {
                             setSort(s);
                             setSortOpen(false);
                           }}
-                          className={`w-full px-4 py-2 text-left text-sm hover:bg-white/8 ${
-                            sort === s ? "text-accent" : "text-fg-dim"
+                          className={`w-full px-4 py-2 text-left text-sm hover:bg-elevated ${
+                            sort === s ? "text-tint" : "text-fg-dim"
                           }`}
                         >
                           {SORT_LABELS[s]}
@@ -150,7 +150,7 @@ export default function Catalog() {
                 value={query}
                 onChange={(e) => update("q", e.target.value)}
                 placeholder="Поиск товаров…"
-                className="w-full rounded-xl border border-white/10 bg-panel py-2.5 pl-10 pr-4 text-sm outline-none placeholder:text-fg-mute focus:border-white/40"
+                className="w-full rounded-xl border border-line bg-panel py-2.5 pl-10 pr-4 text-sm outline-none placeholder:text-fg-mute focus:border-accent-hover"
               />
             </label>
           </div>
@@ -162,7 +162,7 @@ export default function Catalog() {
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center gap-3 rounded-2xl border border-white/8 bg-panel px-6 py-16 text-center">
+            <div className="flex flex-col items-center gap-3 rounded-2xl border border-line bg-panel px-6 py-16 text-center">
               <p className="text-lg font-semibold">
                 {isServiceCategory ? "Это услуга, а не товар" : "Ничего не найдено"}
               </p>
@@ -175,14 +175,14 @@ export default function Catalog() {
                 <button
                   type="button"
                   onClick={() => setBookingOpen(true)}
-                  className="mt-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink"
+                  className="mt-2 rounded-full bg-accent hover:bg-accent-hover px-6 py-3 text-sm font-semibold text-white"
                 >
                   Записаться
                 </button>
               ) : (
                 <Link
                   to="/catalog"
-                  className="mt-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink"
+                  className="mt-2 rounded-full bg-accent hover:bg-accent-hover px-6 py-3 text-sm font-semibold text-white"
                   onClick={() => setSort("popular")}
                 >
                   Сбросить фильтры

@@ -66,8 +66,8 @@ export default function Hero() {
       <div className="relative z-10 mx-auto flex h-full max-w-[1600px] flex-col justify-between px-4 pb-10 pt-28 sm:px-6 lg:px-10 lg:pb-14">
         <div className="flex items-start justify-between gap-6">
           <div className="max-w-2xl animate-fade-up">
-            <h1 className="text-[15vw] font-extrabold leading-[0.92] tracking-tight sm:text-7xl lg:text-8xl">
-              LIXIANG
+            <h1 className="text-[8.4vw] font-extrabold leading-[0.92] tracking-tight sm:text-5xl lg:text-6xl">
+              KIBER SMART AUTO
             </h1>
             <p className="mt-1 text-2xl font-semibold leading-tight text-balance sm:text-4xl lg:text-5xl">
               Больше, чем просто автомобиль.
@@ -78,7 +78,7 @@ export default function Hero() {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
                 to="/catalog"
-                className="group flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-95"
+                className="group flex items-center gap-2 rounded-full bg-accent hover:bg-accent-hover px-6 py-3.5 text-sm font-semibold text-white transition hover:scale-[1.03] active:scale-95"
               >
                 Перейти в каталог
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
@@ -86,7 +86,7 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={() => setVideoOpen(true)}
-                className="flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/60 hover:bg-white/5"
+                className="flex items-center gap-2 rounded-full border border-accent px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent"
               >
                 <Play size={15} className="fill-white" />
                 Смотреть видео
@@ -109,7 +109,7 @@ export default function Hero() {
             ))}
           </div>
 
-          <div className="flex items-center justify-between border-t border-white/12 pt-5">
+          <div className="flex items-center justify-between border-t border-line pt-5">
             <span className="font-mono text-sm text-fg-dim">
               {String(index + 1).padStart(2, "0")} / {String(SLIDES.length).padStart(2, "0")}
             </span>
@@ -119,7 +119,7 @@ export default function Hero() {
                 type="button"
                 onClick={() => go(index - 1)}
                 aria-label="Предыдущий слайд"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:bg-white/10"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-accent text-white transition-colors hover:bg-accent"
               >
                 <ChevronLeft size={17} />
               </button>
@@ -127,7 +127,7 @@ export default function Hero() {
                 type="button"
                 onClick={() => go(index + 1)}
                 aria-label="Следующий слайд"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:bg-white/10"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-accent text-white transition-colors hover:bg-accent"
               >
                 <ChevronRight size={17} />
               </button>

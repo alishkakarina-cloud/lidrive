@@ -12,11 +12,11 @@ const STATS = [
 export default function AboutSection({ page = false }: { page?: boolean }) {
   return (
     <section className="mx-auto max-w-[1600px] px-4 py-10 sm:px-6 lg:px-10">
-      <div className="grid overflow-hidden rounded-3xl border border-white/8 bg-panel lg:grid-cols-[1.2fr_1fr]">
+      <div className="grid overflow-hidden rounded-3xl border border-line bg-panel lg:grid-cols-[1.2fr_1fr]">
         <div className="p-6 sm:p-10 lg:p-14">
           {page ? null : <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">О бренде</h2>}
           <p className={`max-w-xl text-fg-dim ${page ? "" : "mt-5"}`}>
-            LI DRIVE — специализированный магазин и сервис для автомобилей Lixiang. Мы помогаем владельцам получить
+            KIBER SMART AUTO — специализированный магазин и сервис для автомобилей Lixiang. Мы помогаем владельцам получить
             максимум от своего автомобиля: качественные аксессуары, профессиональную установку, русификацию и полную
             техническую поддержку.
           </p>
@@ -32,13 +32,13 @@ export default function AboutSection({ page = false }: { page?: boolean }) {
 
           {page ? (
             <p className="mt-8 max-w-xl text-sm text-fg-dim">
-              Мы начинали как небольшая мастерская для владельцев первых Lixiang в Бишкеке. Сегодня LI DRIVE — это
+              Мы начинали как небольшая мастерская для владельцев первых Lixiang в Бишкеке. Сегодня KIBER SMART AUTO — это
               магазин аксессуаров, сервисный центр и команда, которая знает эти автомобили до последнего винтика.
             </p>
           ) : (
             <Link
               to="/about"
-              className="group mt-8 flex w-fit items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold hover:bg-white/8"
+              className="group mt-8 flex w-fit items-center gap-2 rounded-full border border-accent px-6 py-3 text-sm font-semibold hover:bg-accent"
             >
               Наша история
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />

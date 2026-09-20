@@ -32,17 +32,17 @@ export default function CartDrawer() {
     <div className="fixed inset-0 z-[90] flex justify-end">
       <button
         aria-label="Закрыть корзину"
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        className="absolute inset-0 bg-ink/70 backdrop-blur-sm"
         onClick={() => setCartOpen(false)}
       />
-      <div className="animate-fade-up relative flex h-full w-full max-w-md flex-col border-l border-white/10 bg-ink">
-        <div className="flex items-center justify-between border-b border-white/8 px-6 py-5">
+      <div className="animate-fade-up relative flex h-full w-full max-w-md flex-col border-l border-line bg-ink">
+        <div className="flex items-center justify-between border-b border-line px-6 py-5">
           <h2 className="text-lg font-semibold">Корзина</h2>
           <button
             type="button"
             onClick={() => setCartOpen(false)}
             aria-label="Закрыть"
-            className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-white/8"
+            className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-elevated"
           >
             <X size={18} />
           </button>
@@ -55,7 +55,7 @@ export default function CartDrawer() {
             <Link
               to="/catalog"
               onClick={() => setCartOpen(false)}
-              className="mt-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-transform hover:scale-105"
+              className="mt-2 rounded-full bg-accent hover:bg-accent-hover px-5 py-2.5 text-sm font-semibold text-white transition hover:scale-105"
             >
               Перейти в каталог
             </Link>
@@ -69,7 +69,7 @@ export default function CartDrawer() {
                     <Link
                       to={`/product/${product.slug}`}
                       onClick={() => setCartOpen(false)}
-                      className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-neutral-900"
+                      className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-panel"
                     >
                       <ResponsiveImage
                         id={product.image}
@@ -85,7 +85,7 @@ export default function CartDrawer() {
                         <Link
                           to={`/product/${product.slug}`}
                           onClick={() => setCartOpen(false)}
-                          className="text-sm font-medium leading-snug hover:text-accent"
+                          className="text-sm font-medium leading-snug hover:text-tint"
                         >
                           {product.name}
                         </Link>
@@ -100,7 +100,7 @@ export default function CartDrawer() {
                       </div>
                       <span className="mt-0.5 text-xs text-fg-mute">Цвет: {line.color}</span>
                       <div className="mt-2 flex items-center justify-between">
-                        <div className="flex items-center gap-2 rounded-full border border-white/10 px-1">
+                        <div className="flex items-center gap-2 rounded-full border border-line px-1">
                           <button
                             type="button"
                             onClick={() => setQty(line.productId, line.color, line.qty - 1)}
@@ -127,7 +127,7 @@ export default function CartDrawer() {
               </ul>
             </div>
 
-            <div className="border-t border-white/8 px-6 py-5">
+            <div className="border-t border-line px-6 py-5">
               <div className="mb-4 flex items-center justify-between text-base">
                 <span className="text-fg-dim">Итого</span>
                 <span className="text-xl font-bold">{formatPrice(totalPrice)}</span>
@@ -135,11 +135,11 @@ export default function CartDrawer() {
               <button
                 type="button"
                 onClick={() => {
-                  showToast("Заявка на заказ отправлена менеджеру LI DRIVE");
+                  showToast("Заявка на заказ отправлена менеджеру KIBER SMART AUTO");
                   clear();
                   setCartOpen(false);
                 }}
-                className="w-full rounded-full bg-white py-3.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                className="w-full rounded-full bg-accent hover:bg-accent-hover py-3.5 text-sm font-semibold text-white transition hover:scale-[1.02] active:scale-[0.98]"
               >
                 Оформить заказ
               </button>

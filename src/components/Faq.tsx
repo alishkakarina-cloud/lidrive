@@ -5,7 +5,7 @@ export default function Faq({ items }: { items: { q: string; a: string }[] }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-white/8 overflow-hidden rounded-2xl border border-white/8 bg-panel">
+    <div className="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-panel">
       {items.map((item, i) => {
         const isOpen = open === i;
         return (

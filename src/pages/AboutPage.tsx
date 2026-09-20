@@ -17,7 +17,7 @@ export default function AboutPage() {
     <>
       <PageHeader
         crumbs={[{ label: "Главная", href: "/" }, { label: "О нас" }]}
-        title="О бренде LI DRIVE"
+        title="О бренде KIBER SMART AUTO"
         subtitle="Специализированный магазин и сервис для автомобилей Lixiang."
       />
       <AboutSection page />
@@ -28,10 +28,10 @@ export default function AboutPage() {
       <LifestyleSection page />
       <Wrap>
         <div className="mb-6 flex flex-wrap gap-3">
-          <Link to="/catalog" className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink hover:scale-[1.03] transition-transform">
+          <Link to="/catalog" className="rounded-full bg-accent hover:bg-accent-hover px-6 py-3 text-sm font-semibold text-white hover:scale-[1.03] transition">
             Перейти в каталог
           </Link>
-          <Link to="/reviews" className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold hover:bg-white/8">
+          <Link to="/reviews" className="rounded-full border border-accent px-6 py-3 text-sm font-semibold hover:bg-accent">
             Отзывы клиентов
           </Link>
         </div>
