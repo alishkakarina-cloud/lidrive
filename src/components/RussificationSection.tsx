@@ -31,7 +31,7 @@ export default function RussificationSection({ page = false }: { page?: boolean 
         <div className="relative grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:p-14">
           <div className="flex flex-col justify-center">
             {page ? (
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-tint">Услуга</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-fg-dim">Услуга</p>
             ) : null}
             {page ? (
               <p className="mt-2 text-3xl font-bold tracking-tight sm:text-5xl">Полная адаптация под ваш регион</p>
@@ -65,7 +65,7 @@ export default function RussificationSection({ page = false }: { page?: boolean 
                   <button
                     type="button"
                     onClick={() => setBookingOpen(true)}
-                    className="rounded-full border border-accent px-6 py-3.5 text-sm font-semibold hover:bg-accent"
+                    className="rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold hover:bg-white/5"
                   >
                     Записаться на установку
                   </button>

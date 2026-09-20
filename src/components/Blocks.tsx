@@ -20,7 +20,7 @@ export function FeatureGrid({ items }: { items: FeatureItem[] }) {
   return (
     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((f) => (
-        <div key={f.title} className="rounded-2xl border border-line bg-panel p-6 transition-colors hover:border-accent hover:bg-elevated">
+        <div key={f.title} className="rounded-2xl border border-line bg-panel p-6 transition-colors hover:border-soft hover:bg-elevated">
           <f.icon size={24} strokeWidth={1.5} />
           <h3 className="mt-4 text-base font-semibold">{f.title}</h3>
           <p className="mt-2 text-sm text-fg-dim">{f.text}</p>
@@ -35,7 +35,7 @@ export function Steps({ items }: { items: { title: string; text: string }[] }) {
     <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
       {items.map((s, i) => (
         <li key={s.title} className="rounded-2xl border border-line bg-panel p-6 transition-colors hover:bg-elevated">
-          <span className="font-mono text-sm text-tint">{String(i + 1).padStart(2, "0")}</span>
+          <span className="font-mono text-sm text-fg-dim">{String(i + 1).padStart(2, "0")}</span>
           <h3 className="mt-3 text-base font-semibold">{s.title}</h3>
           <p className="mt-2 text-sm text-fg-dim">{s.text}</p>
         </li>

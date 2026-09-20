@@ -84,7 +84,7 @@ export default function ReviewsPage() {
                   aria-label={`Оценка ${n}`}
                   aria-pressed={rating === n}
                   className={`h-10 w-10 rounded-full border text-sm font-semibold transition-colors ${
-                    n <= rating ? "border-tint bg-accent-dim text-tint" : "border-line text-fg-dim"
+                    n <= rating ? "border-accent bg-soft text-fg" : "border-line text-fg-dim"
                   }`}
                 >
                   {n}

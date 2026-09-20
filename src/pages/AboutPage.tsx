@@ -31,7 +31,7 @@ export default function AboutPage() {
           <Link to="/catalog" className="rounded-full bg-accent hover:bg-accent-hover px-6 py-3 text-sm font-semibold text-white hover:scale-[1.03] transition">
             Перейти в каталог
           </Link>
-          <Link to="/reviews" className="rounded-full border border-accent px-6 py-3 text-sm font-semibold hover:bg-accent">
+          <Link to="/reviews" className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold hover:bg-white/5">
             Отзывы клиентов
           </Link>
         </div>

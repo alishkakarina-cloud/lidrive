@@ -53,21 +53,23 @@ export default function Header() {
           type="button"
           onClick={() => setMobileOpen(false)}
           aria-label="Закрыть меню"
-          className="flex h-11 w-11 items-center justify-center rounded-full hover:bg-elevated"
+          className="flex h-11 w-11 items-center justify-center rounded-full text-accent hover:bg-elevated hover:text-accent-hover"
         >
           <X size={22} />
         </button>
       </div>
       <nav className="px-4 sm:px-6">
         {NAV_LINKS.map((link) => (
-          <Link
+          <NavLink
             key={link.label}
             to={link.href}
             onClick={() => setMobileOpen(false)}
-            className="block border-b border-line py-4 text-xl font-medium"
+            className={({ isActive }) =>
+              `block border-b border-line py-4 text-xl font-medium ${isActive ? "-mx-3 rounded-lg border-transparent bg-soft px-3 text-fg shadow-[inset_0_0_0_1px_var(--green-accent)]" : ""}`
+            }
           >
             {link.label}
-          </Link>
+          </NavLink>
         ))}
       </nav>
     </div>
@@ -77,7 +79,7 @@ export default function Header() {
     <>
     <header
       className={`sticky top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "border-b border-line bg-panel/95 backdrop-blur-xl" : "border-b border-line/60 bg-panel/70 backdrop-blur-md"
+        scrolled ? "glass-strong border-b border-line" : "border-b border-transparent bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-18 max-w-[1600px] items-center justify-between gap-4 px-4 py-3.5 sm:px-6 lg:px-10">
@@ -92,7 +94,9 @@ export default function Header() {
               key={link.label}
               to={link.href}
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-fg ${isActive ? "text-fg" : "text-fg-dim"}`
+                `-mx-3 -my-1.5 rounded-full px-3 py-1.5 text-sm font-medium transition-colors hover:text-fg ${
+                  isActive ? "bg-soft text-fg ring-1 ring-inset ring-accent" : "text-fg-dim"
+                }`
               }
             >
               {link.label}
@@ -105,7 +109,7 @@ export default function Header() {
             type="button"
             onClick={() => setSearchOpen(true)}
             aria-label="Поиск"
-            className="flex h-10 w-10 items-center justify-center rounded-full text-fg-dim transition-colors hover:bg-elevated hover:text-fg"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-accent transition-colors hover:bg-elevated hover:text-accent-hover"
           >
             <Search size={18} />
           </button>
@@ -115,7 +119,7 @@ export default function Header() {
               onClick={() => setProfileOpen((v) => !v)}
               aria-label="Профиль"
               aria-expanded={profileOpen}
-              className="flex h-10 w-10 items-center justify-center rounded-full text-fg-dim transition-colors hover:bg-elevated hover:text-fg"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-accent transition-colors hover:bg-elevated hover:text-accent-hover"
             >
               <User size={18} />
             </button>
@@ -134,7 +138,7 @@ export default function Header() {
                   <Link
                     to="/contacts"
                     onClick={() => setProfileOpen(false)}
-                    className="mt-3 inline-block text-tint hover:underline"
+                    className="mt-3 inline-block text-fg-dim hover:text-fg hover:underline"
                   >
                     Написать нам →
                   </Link>
@@ -146,7 +150,7 @@ export default function Header() {
             type="button"
             onClick={() => setCartOpen(true)}
             aria-label="Корзина"
-            className="relative flex h-10 w-10 items-center justify-center rounded-full text-fg-dim transition-colors hover:bg-elevated hover:text-fg"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full text-accent transition-colors hover:bg-elevated hover:text-accent-hover"
           >
             <ShoppingCart size={18} />
             {totalCount > 0 && (
@@ -159,7 +163,7 @@ export default function Header() {
             type="button"
             onClick={() => setMobileOpen(true)}
             aria-label="Меню"
-            className="flex h-10 w-10 items-center justify-center rounded-full text-fg-dim hover:bg-elevated hover:text-fg lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-accent hover:bg-elevated hover:text-accent-hover lg:hidden"
           >
             <Menu size={20} />
           </button>

@@ -26,7 +26,7 @@ export default function LifestyleSection({ page = false }: { page?: boolean }) {
           {!page && (
             <Link
               to="/about"
-              className="group mt-6 flex w-fit items-center gap-2 rounded-full border border-accent px-6 py-3 text-sm font-semibold hover:bg-accent"
+              className="group mt-6 flex w-fit items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold hover:bg-white/5"
             >
               Узнать больше
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />

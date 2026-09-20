@@ -71,7 +71,7 @@ export default function BookingModal() {
 
         {submitted ? (
           <div className="flex flex-col items-center gap-3 py-8 text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent-dim text-tint">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-soft text-fg">
               ✓
             </div>
             <h3 className="text-xl font-semibold">Заявка отправлена</h3>

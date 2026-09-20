@@ -69,10 +69,10 @@ export default function Catalog() {
               onClick={() => update("model", m)}
               aria-pressed={active}
               className={`flex flex-col items-center gap-2 rounded-xl border px-3 py-4 text-sm font-medium transition-colors ${
-                active ? "border-tint bg-elevated text-fg" : "border-line text-fg-dim hover:border-accent"
+                active ? "border-accent bg-soft text-fg" : "border-line text-fg-dim hover:border-soft"
               }`}
             >
-              <Car size={26} strokeWidth={1.3} />
+              <Car size={26} strokeWidth={1.3} className={active ? "text-accent-hover" : "text-accent"} />
               {m === "all" ? "Все" : m}
             </button>
           );
@@ -91,7 +91,7 @@ export default function Catalog() {
                     onClick={() => update("category", c.id === "all" ? null : c.id)}
                     aria-pressed={active}
                     className={`flex w-full items-center justify-between gap-3 whitespace-nowrap rounded-xl px-4 py-2.5 text-sm transition-colors ${
-                      active ? "bg-accent hover:bg-accent-hover text-white font-semibold" : "text-fg-dim hover:bg-elevated hover:text-fg"
+                      active ? "bg-soft text-fg font-semibold ring-1 ring-inset ring-accent" : "text-fg-dim hover:bg-elevated hover:text-fg"
                     }`}
                   >
                     <span>{c.name}</span>
@@ -132,7 +132,7 @@ export default function Catalog() {
                             setSortOpen(false);
                           }}
                           className={`w-full px-4 py-2 text-left text-sm hover:bg-elevated ${
-                            sort === s ? "text-tint" : "text-fg-dim"
+                            sort === s ? "text-fg" : "text-fg-dim"
                           }`}
                         >
                           {SORT_LABELS[s]}
@@ -150,7 +150,7 @@ export default function Catalog() {
                 value={query}
                 onChange={(e) => update("q", e.target.value)}
                 placeholder="Поиск товаров…"
-                className="w-full rounded-xl border border-line bg-panel py-2.5 pl-10 pr-4 text-sm outline-none placeholder:text-fg-mute focus:border-accent-hover"
+                className="w-full rounded-xl border border-line bg-panel py-2.5 pl-10 pr-4 text-sm outline-none placeholder:text-fg-mute focus:border-accent"
               />
             </label>
           </div>

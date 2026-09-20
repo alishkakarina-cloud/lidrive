@@ -9,7 +9,7 @@ export default function StarRating({ rating, size = 14 }: { rating: number; size
           <Star
             key={i}
             size={size}
-            className={filled ? "fill-tint text-tint" : "fill-transparent text-line"}
+            className={filled ? "fill-fg-dim text-fg-dim" : "fill-transparent text-line"}
             strokeWidth={1.5}
           />
         );

@@ -12,7 +12,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const favorite = isFavorite(product.id);
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-panel transition-colors hover:border-accent hover:bg-elevated">
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-panel transition-colors hover:border-soft hover:bg-elevated">
       <Link to={`/product/${product.slug}`} className="relative block aspect-square overflow-hidden bg-panel">
         <ProductPhoto
           product={product}
@@ -31,11 +31,11 @@ export default function ProductCard({ product }: { product: Product }) {
           aria-label={favorite ? "Убрать из избранного" : "В избранное"}
           className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full glass-strong text-white transition-transform hover:scale-105"
         >
-          <Heart size={16} className={favorite ? "fill-accent text-tint" : ""} />
+          <Heart size={16} className={favorite ? "fill-accent text-accent" : ""} />
         </button>
       </Link>
       <div className="flex flex-1 flex-col gap-2 p-4">
-        <Link to={`/product/${product.slug}`} className="text-sm font-medium leading-snug text-fg hover:text-tint">
+        <Link to={`/product/${product.slug}`} className="text-sm font-medium leading-snug text-fg hover:text-fg">
           {product.name}
         </Link>
         <div className="mt-auto flex items-center justify-between pt-2">

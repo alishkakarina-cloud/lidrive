@@ -41,7 +41,7 @@ export default function ServiceSection({ page = false }: { page?: boolean }) {
             {!page && (
               <Link
                 to="/service"
-                className="rounded-full border border-accent px-6 py-3.5 text-sm font-semibold hover:bg-accent"
+                className="rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold hover:bg-white/5"
               >
                 Все услуги
               </Link>
@@ -54,7 +54,7 @@ export default function ServiceSection({ page = false }: { page?: boolean }) {
                 key={s.label}
                 type="button"
                 onClick={() => setBookingOpen(true)}
-                className="flex flex-col items-center gap-3 rounded-2xl border border-line bg-elevated/40 px-3 py-5 hover:bg-elevated text-center text-xs text-fg-dim transition-colors hover:border-accent hover:text-fg sm:text-sm"
+                className="flex flex-col items-center gap-3 rounded-2xl border border-line bg-elevated/40 px-3 py-5 hover:bg-elevated text-center text-xs text-fg-dim transition-colors hover:border-soft hover:text-fg sm:text-sm"
               >
                 <s.icon size={22} strokeWidth={1.5} />
                 {s.label}

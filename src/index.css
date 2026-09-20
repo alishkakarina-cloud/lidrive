@@ -2,30 +2,33 @@
 
 /* ---- Палитра (единственное место, где задаются цвета) ---- */
 :root {
-  --green-bg: #0b1f17; /* основной фон страницы и секций */
-  --green-surface: #10281e; /* карточки, блоки, шапка, подвал */
-  --green-elevated: #163526; /* наведение на карточки, выпадающие элементы, поля */
-  --green-border: #1e3d2e; /* границы, разделители, тонкие линии */
-  --green-accent: #1b5e3f; /* кнопки, активные элементы, иконки */
-  --green-accent-hover: #237a52; /* кнопки при наведении */
-  --green-text: #7dbe9c; /* приглушённый светлый оттенок: акцентный текст, звёзды (контраст ≥ 7:1) */
+  /* тёмная основа: значения из коммита до перекраски (bd79ae9) */
+  --bg-base: #08090a; /* фон страницы, подвал, мобильное меню */
+  --bg-surface: #101113; /* карточки, блоки, формы */
+  --bg-elevated: #17181b; /* наведение на карточки, выпадающие элементы, поля */
+  --border-base: rgba(255, 255, 255, 0.1); /* границы, разделители */
+
+  /* тёмно-зелёный: только мелкие детали */
+  --green-accent: #1b5e3f; /* основные кнопки, иконки, активные элементы, фокус */
+  --green-accent-hover: #237a52; /* кнопки при наведении, активные иконки */
+  --green-soft: #1e3d2e; /* тонкие линии, фон выбранных элементов */
 }
 
 @theme {
   --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  --color-ink: var(--green-bg);
-  --color-panel: var(--green-surface);
-  --color-panel-2: var(--green-elevated);
-  --color-elevated: var(--green-elevated);
-  --color-line: var(--green-border);
+  --color-ink: var(--bg-base);
+  --color-panel: var(--bg-surface);
+  --color-panel-2: var(--bg-elevated);
+  --color-elevated: var(--bg-elevated);
+  --color-line: var(--border-base);
+  --color-line-soft: rgba(255, 255, 255, 0.06);
   --color-accent: var(--green-accent);
   --color-accent-hover: var(--green-accent-hover);
-  --color-accent-dim: rgba(27, 94, 63, 0.4);
-  --color-tint: var(--green-text);
+  --color-soft: var(--green-soft);
   --color-fg: #f5f5f4;
   --color-fg-dim: #a3a3a0;
-  --color-fg-mute: #8a948e;
+  --color-fg-mute: #6f6f6c;
 
   --default-transition-duration: 250ms;
 
@@ -58,7 +61,7 @@ html {
 }
 
 body {
-  background: var(--green-bg);
+  background: var(--bg-base);
   color: var(--color-fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -81,7 +84,7 @@ body {
 }
 
 ::selection {
-  background: var(--green-accent);
+  background: rgba(255, 255, 255, 0.22);
   color: #ffffff;
 }
 
@@ -90,26 +93,26 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--green-bg);
+  background: var(--bg-base);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--green-border);
+  background: #2a2b2e;
   border-radius: 999px;
-  border: 2px solid var(--green-bg);
+  border: 2px solid var(--bg-base);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--green-accent);
+  background: #3a3b3e;
 }
 
 @layer utilities {
   .glass {
-    background: rgba(16, 40, 30, 0.6);
+    background: rgba(16, 17, 19, 0.55);
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border: 1px solid var(--green-border);
+    border: 1px solid var(--color-line-soft);
   }
   .glass-strong {
-    background: rgba(16, 40, 30, 0.8);
+    background: rgba(10, 11, 12, 0.72);
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
   }
@@ -147,7 +150,7 @@ body {
   height: 100vh;
   height: 100dvh;
   z-index: 9999;
-  background: var(--green-bg);
+  background: var(--bg-base);
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
   overflow-y: auto;

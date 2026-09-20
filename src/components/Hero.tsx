@@ -86,7 +86,7 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={() => setVideoOpen(true)}
-                className="flex items-center gap-2 rounded-full border border-accent px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent"
+                className="flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/5"
               >
                 <Play size={15} className="fill-white" />
                 Смотреть видео
@@ -119,7 +119,7 @@ export default function Hero() {
                 type="button"
                 onClick={() => go(index - 1)}
                 aria-label="Предыдущий слайд"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-accent text-white transition-colors hover:bg-accent"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:bg-white/10"
               >
                 <ChevronLeft size={17} />
               </button>
@@ -127,7 +127,7 @@ export default function Hero() {
                 type="button"
                 onClick={() => go(index + 1)}
                 aria-label="Следующий слайд"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-accent text-white transition-colors hover:bg-accent"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:bg-white/10"
               >
                 <ChevronRight size={17} />
               </button>

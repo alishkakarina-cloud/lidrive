@@ -78,7 +78,7 @@ export default function Product() {
                 aria-label={`Фото ${i + 1}`}
                 aria-pressed={i === active}
                 className={`overflow-hidden rounded-xl border-2 transition-colors ${
-                  i === active ? "border-tint" : "border-transparent opacity-70 hover:opacity-100"
+                  i === active ? "border-accent" : "border-transparent opacity-70 hover:opacity-100"
                 }`}
               >
                 <ProductPhoto
@@ -110,8 +110,8 @@ export default function Product() {
           <div className="mt-5 flex flex-wrap items-center gap-3">
             <span className="text-3xl font-bold tracking-tight">{formatPrice(product.price)}</span>
             {product.inStock && (
-              <span className="flex items-center gap-1.5 rounded-full bg-accent-dim px-3 py-1 text-xs font-semibold text-tint">
-                <span className="h-1.5 w-1.5 rounded-full bg-tint" />В наличии
+              <span className="flex items-center gap-1.5 rounded-full bg-soft px-3 py-1 text-xs font-semibold text-fg">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent-hover" />В наличии
               </span>
             )}
           </div>
@@ -146,7 +146,7 @@ export default function Product() {
                   aria-label={c.name}
                   aria-pressed={i === colorIdx}
                   className={`h-8 w-8 rounded-full border-2 transition-transform hover:scale-110 ${
-                    i === colorIdx ? "border-tint ring-2 ring-tint/40" : "border-line"
+                    i === colorIdx ? "border-accent ring-2 ring-accent/50" : "border-line"
                   }`}
                   style={{ backgroundColor: c.hex }}
                 />
@@ -177,7 +177,7 @@ export default function Product() {
             <button
               type="button"
               onClick={add}
-              className="flex-1 rounded-full border border-accent px-6 py-3.5 text-sm font-semibold transition-colors hover:bg-accent sm:flex-none"
+              className="flex-1 rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold transition-colors hover:bg-white/5 sm:flex-none"
             >
               В корзину
             </button>

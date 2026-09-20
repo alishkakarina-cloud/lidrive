@@ -12,7 +12,7 @@ const NAV = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-panel">
+    <footer className="border-t border-line bg-ink">
       <div className="mx-auto max-w-[1600px] px-4 py-14 sm:px-6 lg:px-10">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div>
@@ -43,7 +43,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-accent hover:text-tint"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-soft hover:text-fg"
               >
                 <InstagramIcon size={17} />
               </a>
@@ -52,7 +52,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Telegram"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-accent hover:text-tint"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-soft hover:text-fg"
               >
                 <TelegramIcon size={17} />
               </a>
@@ -61,7 +61,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="YouTube"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-accent hover:text-tint"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-soft hover:text-fg"
               >
                 <YoutubeIcon size={18} />
               </a>

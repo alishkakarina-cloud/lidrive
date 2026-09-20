@@ -13,7 +13,7 @@ export default function ContactSection({ page = false }: { page?: boolean }) {
             <li className="flex items-start gap-3">
               <Phone size={18} className="mt-0.5 shrink-0 text-fg-dim" />
               <div>
-                <a href="tel:+996700123456" className="font-medium hover:text-tint">
+                <a href="tel:+996700123456" className="font-medium hover:text-fg">
                   +996 700 123 456
                 </a>
                 <p className="text-xs text-fg-mute">(WhatsApp, Telegram)</p>
@@ -21,7 +21,7 @@ export default function ContactSection({ page = false }: { page?: boolean }) {
             </li>
             <li className="flex items-start gap-3">
               <Mail size={18} className="mt-0.5 shrink-0 text-fg-dim" />
-              <a href="mailto:info@lidrive.kg" className="font-medium hover:text-tint">
+              <a href="mailto:info@lidrive.kg" className="font-medium hover:text-fg">
                 info@lidrive.kg
               </a>
             </li>
@@ -44,7 +44,7 @@ export default function ContactSection({ page = false }: { page?: boolean }) {
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-accent hover:text-tint"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-soft hover:text-fg"
             >
               <InstagramIcon size={17} />
             </a>
@@ -53,7 +53,7 @@ export default function ContactSection({ page = false }: { page?: boolean }) {
               target="_blank"
               rel="noreferrer"
               aria-label="Telegram"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-accent hover:text-tint"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-soft hover:text-fg"
             >
               <TelegramIcon size={17} />
             </a>
@@ -62,7 +62,7 @@ export default function ContactSection({ page = false }: { page?: boolean }) {
               target="_blank"
               rel="noreferrer"
               aria-label="YouTube"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-accent hover:text-tint"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-soft hover:text-fg"
             >
               <YoutubeIcon size={18} />
             </a>
@@ -84,7 +84,7 @@ export default function ContactSection({ page = false }: { page?: boolean }) {
           {!page && (
             <Link
               to="/contacts"
-              className="group flex items-center justify-center gap-2 rounded-full border border-accent py-3.5 text-sm font-semibold hover:bg-accent"
+              className="group flex items-center justify-center gap-2 rounded-full border border-white/25 py-3.5 text-sm font-semibold hover:bg-white/5"
             >
               Написать нам
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />

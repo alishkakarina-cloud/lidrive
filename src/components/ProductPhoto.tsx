@@ -36,7 +36,7 @@ export default function ProductPhoto({
         style={aspect ? { aspectRatio: aspect } : undefined}
         className={`flex items-center justify-center bg-gradient-to-br from-panel to-panel-2 ${className}`}
       >
-        <ImageIcon className="h-1/4 w-1/4 max-h-16 max-w-16 text-accent/50" strokeWidth={1.2} />
+        <ImageIcon className="h-1/4 w-1/4 max-h-16 max-w-16 text-fg-mute/50" strokeWidth={1.2} />
       </div>
     );
   }
