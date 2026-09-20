@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, Search, ShoppingCart, User, X } from "lucide-react";
 import { useCart } from "../lib/cart";
@@ -32,7 +33,48 @@ export default function Header() {
     setMobileOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onResize = () => window.innerWidth >= 1024 && setMobileOpen(false);
+    window.addEventListener("resize", onResize);
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener("resize", onResize);
+    };
+  }, [mobileOpen]);
+
+  const mobileMenu = (
+    <div className="mobile-menu" data-open={mobileOpen} aria-hidden={!mobileOpen}>
+      <div className="mx-auto flex h-18 max-w-[1600px] items-center justify-between px-4 sm:px-6">
+        <span className="whitespace-nowrap text-lg font-extrabold tracking-tight">KIBER SMART AUTO</span>
+        <button
+          type="button"
+          onClick={() => setMobileOpen(false)}
+          aria-label="Закрыть меню"
+          className="flex h-11 w-11 items-center justify-center rounded-full hover:bg-elevated"
+        >
+          <X size={22} />
+        </button>
+      </div>
+      <nav className="px-4 sm:px-6">
+        {NAV_LINKS.map((link) => (
+          <Link
+            key={link.label}
+            to={link.href}
+            onClick={() => setMobileOpen(false)}
+            className="block border-b border-line py-4 text-xl font-medium"
+          >
+            {link.label}
+          </Link>
+        ))}
+      </nav>
+    </div>
+  );
+
   return (
+    <>
     <header
       className={`sticky top-0 z-50 transition-colors duration-300 ${
         scrolled ? "border-b border-line bg-panel/95 backdrop-blur-xl" : "border-b border-line/60 bg-panel/70 backdrop-blur-md"
@@ -124,33 +166,8 @@ export default function Header() {
         </div>
       </div>
 
-      {mobileOpen && (
-        <div className="fixed inset-0 z-50 bg-panel lg:hidden">
-          <div className="flex h-18 items-center justify-between px-4 py-3.5">
-            <span className="text-lg font-extrabold">KIBER SMART AUTO</span>
-            <button
-              type="button"
-              onClick={() => setMobileOpen(false)}
-              aria-label="Закрыть меню"
-              className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-elevated"
-            >
-              <X size={20} />
-            </button>
-          </div>
-          <nav className="flex flex-col gap-1 px-6 py-6">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                to={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="border-b border-line py-4 text-xl font-medium"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      )}
     </header>
+    {createPortal(mobileMenu, document.body)}
+    </>
   );
 }
